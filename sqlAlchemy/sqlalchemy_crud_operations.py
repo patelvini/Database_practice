@@ -1,5 +1,6 @@
 from sqlalchemy import *
-import sqlalchemy_connection as sc
+import sqlalchemy_connection as sql_c
+import settings as sc
 
 class sqlAlchemyOperation:
 
@@ -59,23 +60,11 @@ class sqlAlchemyOperation:
 
 if __name__ == '__main__':
 
-	# server = 'CS79-PC\\SQLEXPRESS'
-	# database = 'DEMO'
-	# DRIVER = 'SQL Server Native Client 11.0'
-	# username = 'vini.patel'
-	# password = 'vini@123'
+	setting_ob = sc.Settings()
 
-	# db = sc.sqlAlchemyConnection(input("Enter name for database : "))
+	db = sql_c.sqlAlchemyConnection()
 
-	# db.selectServerHost(input("Enter server host name : "))
-	# db.selectUsername(input("Enter user name : "))
-	# db.selectPassword(input("Enter password : "))
-
-	db = sc.sqlAlchemyConnection('DEMO')
-	db.selectServerHost('CS79-PC\\SQLEXPRESS')
-	db.selectUsername('vini.patel')
-	db.selectPassword('vini@123')
-	engine = db.createConnection()
+	engine = db.createConnection(setting_ob)
 
 	op = sqlAlchemyOperation()
 

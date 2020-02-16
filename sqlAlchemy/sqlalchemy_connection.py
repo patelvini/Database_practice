@@ -2,21 +2,11 @@ from sqlalchemy import *
 
 class sqlAlchemyConnection:
 
-	def __init__(self,database_name):
-		self.database_name = database_name
+	def createConnection(self,setting_ob):
 
-	def selectServerHost(self,server_host):
-		self.server_host = server_host
+		DRIVER = "ODBC Driver 17 for SQL Server"
 
-	def selectUsername(self,username):
-		self.username = username
-
-	def selectPassword(self,password):
-		self.password = password
-
-	def createConnection(self):
-
-		self.Database_Connection = f'mssql://{self.username}:{self.password}@{self.server_host}/{self.database_name}?driver={"SQL Server Native Client 11.0"}' 
+		self.Database_Connection = f'mssql://{setting_ob.USERNAME}:{setting_ob.SECRET}@{setting_ob.SERVER}/{setting_ob.DATABASE}?driver={DRIVER}' 
 
 		try:
 			self.engine = create_engine(self.Database_Connection)
