@@ -1,0 +1,81 @@
+To show all database
+>>> show dbs
+
+to create database
+>>> use (database_name)
+
+To create user
+>>>db.createUser({
+	user:"rachit",
+	pwd:"yagnik",
+	roles:["readWrite","dbAdmin"]
+});
+
+To insert data
+>>>{
+	first_name:"Mangy",
+	last_name:"Carl",
+	contacts:[123456,567890],
+	address:{
+	house:"221B",
+	street:"Baker Street",
+	city:"London"sni
+	}
+}
+
+To insert multiple values
+>>>[{
+	first_name:"Ken",
+	last_name:"Adams",
+	contacts:[123,590],
+	address:{
+	house:"4B",
+	street:"Caltech Street",
+	city:"Los Angeles"
+	}
+},{
+	first_name:"Doug",
+	last_name:"Judy",
+	contacts:[1236,890],
+	address:{
+	house:"99",
+	street:"One Police Plaza",
+	city:"Brroklyn"
+	},
+	gender:"Male"
+}]
+
+To update an entry
+
+>>> db.customer.update({first_name:"Mangy"},{$set:{gender:"Female"}});
+
+
+To add a field
+>>> db.customer.update({},{$set:{age:18}},false,true);
+
+To increment a particular value
+
+>>> db.customer.update({first_name:"Doug"},{$inc:{age:5}});
+
+
+To remove a field
+>>> db.customer.update({first_name:"Mangy"},{$unset:{gender:1}});
+
+To upsert a value
+>>> db.customer.update({first_name:"Mary"},{first_name:"Mary",last_name:"Jane"},{upsert: true});
+
+
+To Rename a Column
+
+>>> db.customer.update({},{$rename:{"gender":"sex"}},false,true);
+
+
+To remove an entry
+
+>>> db.customer.remove({first_name:"Mary"});
+
+
+To remove only one particular entry
+
+>>> db.customer.remove({first_name:"Mary"},{justOne:true});
+

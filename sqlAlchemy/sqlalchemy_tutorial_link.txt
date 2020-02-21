@@ -1,0 +1,7 @@
+https://kite.com/python/docs/sqlalchemy.databases.mssql
+
+https://www.pythonsheets.com/notes/python-sqlalchemy.html
+
+https://towardsdatascience.com/sqlalchemy-python-tutorial-79a577141a91
+
+https://docs-sqlalchemy.readthedocs.io/ko/latest/dialects/mssql.html

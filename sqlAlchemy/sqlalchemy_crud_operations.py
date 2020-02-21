@@ -1,6 +1,5 @@
 from sqlalchemy import *
-import sqlalchemy_connection as sql_c
-import settings as sc
+import sqlalchemy_connection as sc
 
 class sqlAlchemyOperation:
 
@@ -40,31 +39,45 @@ class sqlAlchemyOperation:
 		else:
 			print("No table found !!!")
 
-	# def inserData(self,*values):
+	# def inserData(self):
 	# 	table_name = input("Enter table name : ")
 	# 	self.metadata.reflect(bind = engine)
 
 	# 	if table_name in self.metadata.tables:
 	# 		result = Table(table_name, self.metadata, autoload = True, autoload_with = engine)
 	# 		list1 = result.columns.keys()
+			
 	# 		print(f"Columns in table {table_name} : ",list1)
 
-			
-	# 		ins = result.insert().values()
-	# 		self.connection.execute(ins)
-			
-	# 		print("Inserted successfully !!!")
+	# 		n = int(input("Enter how many records you want to insert : "))
+
+	# 		for i in range(0,n):
+	# 			ins = (result.insert(),{list1[]})	
+	# 			self.connection.execute(ins)
+	# 			print("Inserted successfully !!!")		
 
 	# 	else:
 	# 		print("No table found !!!")
 
 if __name__ == '__main__':
 
-	setting_ob = sc.Settings()
+	# server = 'CS79-PC\\SQLEXPRESS'
+	# database = 'DEMO'
+	# DRIVER = 'SQL Server Native Client 11.0'
+	# username = 'vini.patel'
+	# password = 'vini@123'
 
-	db = sql_c.sqlAlchemyConnection()
+	# db = sc.sqlAlchemyConnection(input("Enter name for database : "))
 
-	engine = db.createConnection(setting_ob)
+	# db.selectServerHost(input("Enter server host name : "))
+	# db.selectUsername(input("Enter user name : "))
+	# db.selectPassword(input("Enter password : "))
+
+	db = sc.sqlAlchemyConnection('DEMO')
+	db.selectServerHost('CS79-PC\\SQLEXPRESS')
+	db.selectUsername('vini.patel')
+	db.selectPassword('vini@123')
+	engine = db.createConnection()
 
 	op = sqlAlchemyOperation()
 
@@ -74,3 +87,5 @@ if __name__ == '__main__':
 	# op.readData()
 
 	op.inserData()
+
+
